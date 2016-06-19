@@ -84,15 +84,12 @@ public class Project extends AbstractNamedEntity<Project> {
 
     
     /**
-     * Gets the personas.
+     * Adds the business object.
      *
-     * @return the personas
+     * @param bo the bo
      */
-    public Set<Persona> getPersonas() {
-        if (null == this.personas) {
-            this.personas= new HashSet<>();
-        }
-        return personas;
+    public void addBusinessObject(BusinessObject bo){
+        getBusinessObjects().add(bo);
     }
 
     /**
@@ -106,26 +103,60 @@ public class Project extends AbstractNamedEntity<Project> {
     }
     
     /**
-     * Knows persona.
+     * Adds the system.
      *
-     * @param persona the persona
-     * @return the project
+     * @param sysInfo the sys info
      */
-    public Project knowsPersona(Persona persona)
-    {
-        addPersona(persona);
-        return this;
+    public void addSystem(SystemInformation sysInfo){
+        getSystems().add(sysInfo);
     }
     
     /**
-     * Sets the personas.
+     * Adds the use case.
      *
-     * @param personas the new personas
+     * @param usecase the usecase
      */
-    public void setPersonas(Set<Persona> personas) {
-        this.personas = personas;
+    public void addUseCase(UseCase usecase)
+    {
+        getUsecases().add(usecase);
     }
 
+    /**
+     * Gets the business objects.
+     *
+     * @return the business objects
+     */
+    public Set<BusinessObject> getBusinessObjects() {
+        if (null == this.businessObjects) {
+            this.businessObjects= new HashSet<>();
+        }
+        return businessObjects;
+    }
+
+    /**
+     * Gets the personas.
+     *
+     * @return the personas
+     */
+    public Set<Persona> getPersonas() {
+        if (null == this.personas) {
+            this.personas= new HashSet<>();
+        }
+        return personas;
+    }
+
+    /**
+     * Gets the systems.
+     *
+     * @return the systems
+     */
+    public Set<SystemInformation> getSystems() {
+        if (null == this.systems) {
+            this.systems= new HashSet<>();
+        }
+        return systems;
+    }
+    
     /**
      * Gets the usecases.
      *
@@ -137,24 +168,40 @@ public class Project extends AbstractNamedEntity<Project> {
         }
         return usecases;
     }
-
+    
     /**
-     * Sets the usecases.
+     * Knows business onject.
      *
-     * @param usecases the new usecases
+     * @param bo the bo
+     * @return the project
      */
-    public void setUsecases(Set<UseCase> usecases) {
-        this.usecases = usecases;
+    public Project knowsBusinessOnject(BusinessObject bo){
+        addBusinessObject(bo);
+        return this;
     }
 
     /**
-     * Adds the use case.
+     * Knows persona.
      *
-     * @param usecase the usecase
+     * @param persona the persona
+     * @return the project
      */
-    public void addUseCase(UseCase usecase)
+    public Project knowsPersona(Persona persona)
     {
-        getUsecases().add(usecase);
+        addPersona(persona);
+        return this;
+    }
+
+    /**
+     * Knows system.
+     *
+     * @param sysInfo the sys info
+     * @return the project
+     */
+    public Project knowsSystem(SystemInformation sysInfo)
+    {
+        addSystem(sysInfo);
+        return this;
     }
     
     /**
@@ -170,17 +217,23 @@ public class Project extends AbstractNamedEntity<Project> {
     }
     
     /**
-     * Gets the systems.
+     * Sets the business objects.
      *
-     * @return the systems
+     * @param businessObjects the new business objects
      */
-    public Set<SystemInformation> getSystems() {
-        if (null == this.systems) {
-            this.systems= new HashSet<>();
-        }
-        return systems;
+    public void setBusinessObjects(Set<BusinessObject> businessObjects) {
+        this.businessObjects = businessObjects;
     }
 
+    /**
+     * Sets the personas.
+     *
+     * @param personas the new personas
+     */
+    public void setPersonas(Set<Persona> personas) {
+        this.personas = personas;
+    }
+    
     /**
      * Sets the systems.
      *
@@ -189,66 +242,13 @@ public class Project extends AbstractNamedEntity<Project> {
     public void setSystems(Set<SystemInformation> systems) {
         this.systems = systems;
     }
-
-    /**
-     * Adds the system.
-     *
-     * @param sysInfo the sys info
-     */
-    public void addSystem(SystemInformation sysInfo){
-        getSystems().add(sysInfo);
-    }
     
     /**
-     * Knows system.
+     * Sets the usecases.
      *
-     * @param sysInfo the sys info
-     * @return the project
+     * @param usecases the new usecases
      */
-    public Project knowsSystem(SystemInformation sysInfo)
-    {
-        addSystem(sysInfo);
-        return this;
-    }
-    
-    /**
-     * Gets the business objects.
-     *
-     * @return the business objects
-     */
-    public Set<BusinessObject> getBusinessObjects() {
-        if (null == this.businessObjects) {
-            this.businessObjects= new HashSet<>();
-        }
-        return businessObjects;
-    }
-
-    /**
-     * Sets the business objects.
-     *
-     * @param businessObjects the new business objects
-     */
-    public void setBusinessObjects(Set<BusinessObject> businessObjects) {
-        this.businessObjects = businessObjects;
-    }
-    
-    /**
-     * Adds the business object.
-     *
-     * @param bo the bo
-     */
-    public void addBusinessObject(BusinessObject bo){
-        getBusinessObjects().add(bo);
-    }
-    
-    /**
-     * Knows business onject.
-     *
-     * @param bo the bo
-     * @return the project
-     */
-    public Project knowsBusinessOnject(BusinessObject bo){
-        addBusinessObject(bo);
-        return this;
+    public void setUsecases(Set<UseCase> usecases) {
+        this.usecases = usecases;
     } 
 }

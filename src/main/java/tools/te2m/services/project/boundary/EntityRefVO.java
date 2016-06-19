@@ -36,21 +36,21 @@ public class EntityRefVO {
     // @TODO Define and implement HATEOAS compliant link handling
 
     /**
+     * Gets the description.
+     *
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
      * Gets the id.
      *
      * @return the id
      */
     public Long getId() {
         return id;
-    }
-
-    /**
-     * Sets the id.
-     *
-     * @param id the new id
-     */
-    public void setId(Long id) {
-        this.id = id;
     }
 
     /**
@@ -63,30 +63,30 @@ public class EntityRefVO {
     }
 
     /**
-     * Sets the name.
-     *
-     * @param name the new name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Gets the description.
-     *
-     * @return the description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
      * Sets the description.
      *
      * @param description the new description
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * Sets the id.
+     *
+     * @param id the new id
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * Sets the name.
+     *
+     * @param name the new name
+     */
+    public void setName(String name) {
+        this.name = name;
     }
     
     

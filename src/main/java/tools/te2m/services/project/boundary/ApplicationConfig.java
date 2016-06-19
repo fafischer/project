@@ -20,16 +20,6 @@ import javax.ws.rs.core.Application;
 @javax.ws.rs.ApplicationPath("api")
 public class ApplicationConfig extends Application {
 
-    /* (non-Javadoc)
-     * @see javax.ws.rs.core.Application#getClasses()
-     */
-    @Override
-    public Set<Class<?>> getClasses() {
-        Set<Class<?>> resources = new java.util.HashSet<>();
-        addRestResourceClasses(resources);
-        return resources;
-    }
-
     /**
      * Do not modify addRestResourceClasses() method.
      * It is automatically populated with
@@ -39,8 +29,17 @@ public class ApplicationConfig extends Application {
      * @param resources the resources
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(tools.te2m.services.project.boundary.ObjectFacadeREST.class);
         resources.add(tools.te2m.services.project.boundary.project.ProjectFacadeREST.class);
+    }
+
+    /* (non-Javadoc)
+     * @see javax.ws.rs.core.Application#getClasses()
+     */
+    @Override
+    public Set<Class<?>> getClasses() {
+        Set<Class<?>> resources = new java.util.HashSet<>();
+        addRestResourceClasses(resources);
+        return resources;
     }
     
 }

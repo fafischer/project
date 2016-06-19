@@ -22,14 +22,15 @@ import static org.junit.Assert.*;
 public class UseCaseTest {
     
     /**
-     * Test for get usecases.
+     * Test for add usecases.
      */
     @Test
-    public void testGetUsecases() {
+    public void testAddUsecases() {
         // must never return null
-        UseCase p1 = new UseCase();
+        UseCase p1 = UseCase.create();
+        p1.addIncludedUseCase(UseCase.create());
         assertNotNull("Must not return null", p1.getIncludedUsecases());
-                
+        assertEquals("Wrong number of usecases returned ", 1, p1.getIncludedUsecases().size());
     }
 
     /**
@@ -51,15 +52,14 @@ public class UseCaseTest {
     
     
     /**
-     * Test for add usecases.
+     * Test for get usecases.
      */
     @Test
-    public void testAddUsecases() {
+    public void testGetUsecases() {
         // must never return null
-        UseCase p1 = UseCase.create();
-        p1.addIncludedUseCase(UseCase.create());
+        UseCase p1 = new UseCase();
         assertNotNull("Must not return null", p1.getIncludedUsecases());
-        assertEquals("Wrong number of usecases returned ", 1, p1.getIncludedUsecases().size());
+                
     }
 
 }

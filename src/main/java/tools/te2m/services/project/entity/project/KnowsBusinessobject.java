@@ -26,6 +26,27 @@ public class KnowsBusinessobject extends AbstractEntity{
 
 
     /**
+     * The project.
+     */
+    @StartNode
+    private Project project;
+
+    /**
+     * The bo.
+     */
+    @EndNode
+    private BusinessObject bo;
+    
+    /**
+     * Gets the bo.
+     *
+     * @return the bo
+     */
+    public BusinessObject getBo() {
+        return bo;
+    }
+    
+    /**
      * Gets the project.
      *
      * @return the project
@@ -35,41 +56,20 @@ public class KnowsBusinessobject extends AbstractEntity{
     }
 
     /**
-     * Sets the project.
-     *
-     * @param project the new project
-     */
-    public void setProject(Project project) {
-        this.project = project;
-    }
-    
-    /**
-     * The project.
-     */
-    @StartNode
-    private Project project;
-    
-    /**
-     * The bo.
-     */
-    @EndNode
-    private BusinessObject bo;
-
-    /**
-     * Gets the bo.
-     *
-     * @return the bo
-     */
-    public BusinessObject getBo() {
-        return bo;
-    }
-
-    /**
      * Sets the bo.
      *
      * @param bo the new bo
      */
     public void setBo(BusinessObject bo) {
         this.bo = bo;
+    }
+
+    /**
+     * Sets the project.
+     *
+     * @param project the new project
+     */
+    public void setProject(Project project) {
+        this.project = project;
     }
 }

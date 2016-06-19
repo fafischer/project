@@ -47,21 +47,21 @@ public class HasRequirements extends AbstractEntity{
     }
 
     /**
-     * Sets the project.
-     *
-     * @param project the new project
-     */
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
-    /**
      * Gets the usecase.
      *
      * @return the usecase
      */
     public UseCase getUsecase() {
         return usecase;
+    }
+
+    /**
+     * Sets the project.
+     *
+     * @param project the new project
+     */
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     /**

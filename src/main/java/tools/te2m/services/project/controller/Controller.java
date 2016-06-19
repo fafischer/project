@@ -18,11 +18,19 @@ package tools.te2m.services.project.controller;
 public interface Controller<T> {
 
     /**
-     * Find all.
+     * Creates the or update.
      *
-     * @return the iterable
+     * @param object the object
+     * @return the t
      */
-    Iterable<T> findAll();
+    T createOrUpdate(T object);
+
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
+    void delete(Long id);
 
     /**
      * Find.
@@ -33,18 +41,10 @@ public interface Controller<T> {
     T find(Long id);
 
     /**
-     * Delete.
+     * Find all.
      *
-     * @param id the id
+     * @return the iterable
      */
-    void delete(Long id);
-
-    /**
-     * Creates the or update.
-     *
-     * @param object the object
-     * @return the t
-     */
-    T createOrUpdate(T object);
+    Iterable<T> findAll();
 
 }

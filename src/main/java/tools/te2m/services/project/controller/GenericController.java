@@ -38,19 +38,12 @@ public abstract class GenericController<T> implements Controller<T> {
  private Session session = Neo4JSessionFactory.getInstance().getNeo4jSession();
 
  /* (non-Javadoc)
-  * @see tools.te2m.services.project.controller.Controller#findAll()
+  * @see tools.te2m.services.project.controller.Controller#createOrUpdate(java.lang.Object)
   */
  @Override
- public Iterable<T> findAll() {
-     return session.loadAll(getEntityType(), DEPTH_LIST);
- }
-
- /* (non-Javadoc)
-  * @see tools.te2m.services.project.controller.Controller#find(java.lang.Long)
-  */
- @Override
- public T find(Long id) {
-     return session.load(getEntityType(), id, DEPTH_ENTITY);
+ public T createOrUpdate(T entity) {
+     session.save(entity, DEPTH_ENTITY);
+     return find(((AbstractEntity) entity).getId());
  }
 
  /* (non-Javadoc)
@@ -62,12 +55,19 @@ public abstract class GenericController<T> implements Controller<T> {
  }
 
  /* (non-Javadoc)
-  * @see tools.te2m.services.project.controller.Controller#createOrUpdate(java.lang.Object)
+  * @see tools.te2m.services.project.controller.Controller#find(java.lang.Long)
   */
  @Override
- public T createOrUpdate(T entity) {
-     session.save(entity, DEPTH_ENTITY);
-     return find(((AbstractEntity) entity).getId());
+ public T find(Long id) {
+     return session.load(getEntityType(), id, DEPTH_ENTITY);
+ }
+
+ /* (non-Javadoc)
+  * @see tools.te2m.services.project.controller.Controller#findAll()
+  */
+ @Override
+ public Iterable<T> findAll() {
+     return session.loadAll(getEntityType(), DEPTH_LIST);
  }
 
  /**

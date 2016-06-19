@@ -57,24 +57,13 @@ public class Service extends AbstractNamedEntity<Service> {
     private Set<Operation> operations;
 
     /**
-     * Gets the operations.
+     * Adds the configuration.
      *
-     * @return the operations
+     * @param config the config
      */
-    public Set<Operation> getOperations() {
-        if (null == operations) {
-            operations = new HashSet<>();
-        }
-        return operations;
-    }
-
-    /**
-     * Sets the operations.
-     *
-     * @param operations the new operations
-     */
-    public void setOperations(Set<Operation> operations) {
-        this.operations = operations;
+    public void addConfiguration(BusinessObject config)
+    {
+        getConfiguration().add(config);
     }
 
     /**
@@ -84,17 +73,6 @@ public class Service extends AbstractNamedEntity<Service> {
      */
     public void addOperation(Operation bo) {
         getOperations().add(bo);
-    }
-
-    /**
-     * With operation.
-     *
-     * @param bo the bo
-     * @return the service
-     */
-    public Service withOperation(Operation bo) {
-        addOperation(bo);
-        return this;
     }
 
     /**
@@ -111,6 +89,18 @@ public class Service extends AbstractNamedEntity<Service> {
     }
 
     /**
+     * Gets the operations.
+     *
+     * @return the operations
+     */
+    public Set<Operation> getOperations() {
+        if (null == operations) {
+            operations = new HashSet<>();
+        }
+        return operations;
+    }
+
+    /**
      * Sets the configuration.
      *
      * @param configuration the new configuration
@@ -120,15 +110,14 @@ public class Service extends AbstractNamedEntity<Service> {
     }
 
     /**
-     * Adds the configuration.
+     * Sets the operations.
      *
-     * @param config the config
+     * @param operations the new operations
      */
-    public void addConfiguration(BusinessObject config)
-    {
-        getConfiguration().add(config);
+    public void setOperations(Set<Operation> operations) {
+        this.operations = operations;
     }
-    
+
     /**
      * With configuration.
      *
@@ -138,6 +127,17 @@ public class Service extends AbstractNamedEntity<Service> {
     public Service withConfiguration(BusinessObject config)
     {
         addConfiguration(config);
+        return this;
+    }
+    
+    /**
+     * With operation.
+     *
+     * @param bo the bo
+     * @return the service
+     */
+    public Service withOperation(Operation bo) {
+        addOperation(bo);
         return this;
     }
 }

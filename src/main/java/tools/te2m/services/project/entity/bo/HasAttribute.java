@@ -39,24 +39,6 @@ public class HasAttribute extends AbstractEntity{
     private BusinessObject attribute;
 
     /**
-     * Gets the business object.
-     *
-     * @return the business object
-     */
-    public BusinessObject getBusinessObject() {
-        return businessObject;
-    }
-
-    /**
-     * Sets the business object.
-     *
-     * @param businessObject the new business object
-     */
-    public void setBusinessObject(BusinessObject businessObject) {
-        this.businessObject = businessObject;
-    }
- 
-    /**
      * Gets the attribute.
      *
      * @return the attribute
@@ -66,11 +48,29 @@ public class HasAttribute extends AbstractEntity{
     }
 
     /**
+     * Gets the business object.
+     *
+     * @return the business object
+     */
+    public BusinessObject getBusinessObject() {
+        return businessObject;
+    }
+ 
+    /**
      * Sets the attribute.
      *
      * @param attr the new attribute
      */
     public void setAttribute(BusinessObject attr) {
         this.attribute = attr;
+    }
+
+    /**
+     * Sets the business object.
+     *
+     * @param businessObject the new business object
+     */
+    public void setBusinessObject(BusinessObject businessObject) {
+        this.businessObject = businessObject;
     }
 }

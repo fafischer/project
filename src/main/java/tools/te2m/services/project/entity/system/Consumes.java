@@ -39,24 +39,6 @@ public class Consumes extends AbstractEntity{
     private Service service;
 
     /**
-     * Gets the system.
-     *
-     * @return the system
-     */
-    public SystemInformation getSystem() {
-        return system;
-    }
-
-    /**
-     * Sets the system.
-     *
-     * @param system the new system
-     */
-    public void setSystem(SystemInformation system) {
-        this.system = system;
-    }
-
-    /**
      * Gets the service.
      *
      * @return the service
@@ -66,12 +48,30 @@ public class Consumes extends AbstractEntity{
     }
 
     /**
+     * Gets the system.
+     *
+     * @return the system
+     */
+    public SystemInformation getSystem() {
+        return system;
+    }
+
+    /**
      * Sets the service.
      *
      * @param service the new service
      */
     public void setService(Service service) {
         this.service = service;
+    }
+
+    /**
+     * Sets the system.
+     *
+     * @param system the new system
+     */
+    public void setSystem(SystemInformation system) {
+        this.system = system;
     }
     
     

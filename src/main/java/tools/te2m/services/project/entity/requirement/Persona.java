@@ -31,13 +31,6 @@ public class Persona extends AbstractNamedEntity<Persona> {
     public static final String RELATIONSHIP_WANTS_TO = "WANTS_TO";
 
     /**
-     * The usecases.
-     */
-    @Relationship(type = RELATIONSHIP_WANTS_TO)
-
-    private Set<UseCase> usecases;
-
-    /**
      * Creates the.
      *
      * @return the persona
@@ -45,7 +38,23 @@ public class Persona extends AbstractNamedEntity<Persona> {
     public static Persona create(){
         return new Persona();
     }
+
+    /**
+     * The usecases.
+     */
+    @Relationship(type = RELATIONSHIP_WANTS_TO)
+
+    private Set<UseCase> usecases;
     
+    /**
+     * Adds the use case.
+     *
+     * @param usecase the usecase
+     */
+    public void addUseCase(UseCase usecase) {
+        getUsecases().add(usecase);
+    }
+
     /**
      * Gets the usecases.
      *
@@ -65,15 +74,6 @@ public class Persona extends AbstractNamedEntity<Persona> {
      */
     public void setUsecases(Set<UseCase> usecases) {
         this.usecases = usecases;
-    }
-
-    /**
-     * Adds the use case.
-     *
-     * @param usecase the usecase
-     */
-    public void addUseCase(UseCase usecase) {
-        getUsecases().add(usecase);
     }
 
     /**

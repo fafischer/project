@@ -56,6 +56,24 @@ public class BusinessObject extends AbstractNamedEntity<BusinessObject> {
     private Set<Operation> operations;
 
     /**
+     * Adds the attribute.
+     *
+     * @param bo the bo
+     */
+    public void addAttribute(BusinessObject bo){
+        getAttributes().add(bo);
+    }
+
+    /**
+     * Adds the operation.
+     *
+     * @param bo the bo
+     */
+    public void addOperation(Operation bo){
+        getOperations().add(bo);
+    }
+
+    /**
      * Gets the attributes.
      *
      * @return the attributes
@@ -66,36 +84,6 @@ public class BusinessObject extends AbstractNamedEntity<BusinessObject> {
         }
         return attributes;
     }
-
-    /**
-     * Sets the attributes.
-     *
-     * @param attributes the new attributes
-     */
-    public void setAttributes(Set<BusinessObject> attributes) {
-        this.attributes = attributes;
-    }
-
-    /**
-     * Adds the attribute.
-     *
-     * @param bo the bo
-     */
-    public void addAttribute(BusinessObject bo){
-        getAttributes().add(bo);
-    }
-    
-    /**
-     * With attribute.
-     *
-     * @param bo the bo
-     * @return the business object
-     */
-    public BusinessObject withAttribute(BusinessObject bo){
-        addAttribute(bo);
-        return this;
-    }
-            
     
     /**
      * Gets the operations.
@@ -109,6 +97,16 @@ public class BusinessObject extends AbstractNamedEntity<BusinessObject> {
         }
         return operations;
     }
+            
+    
+    /**
+     * Sets the attributes.
+     *
+     * @param attributes the new attributes
+     */
+    public void setAttributes(Set<BusinessObject> attributes) {
+        this.attributes = attributes;
+    }
 
     /**
      * Sets the operations.
@@ -120,12 +118,14 @@ public class BusinessObject extends AbstractNamedEntity<BusinessObject> {
     }
     
     /**
-     * Adds the operation.
+     * With attribute.
      *
      * @param bo the bo
+     * @return the business object
      */
-    public void addOperation(Operation bo){
-        getOperations().add(bo);
+    public BusinessObject withAttribute(BusinessObject bo){
+        addAttribute(bo);
+        return this;
     }
     
     /**

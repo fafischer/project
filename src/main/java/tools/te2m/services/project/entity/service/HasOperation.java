@@ -40,26 +40,6 @@ public class HasOperation extends AbstractEntity{
     private Operation operation;
 
     /**
-     * Gets the servicet.
-     *
-     * @return the servicet
-     */
-    public Service getServicet() {
-        return servicet;
-    }
-
-    /**
-     * Sets the servicet.
-     *
-     * @param servicet the new servicet
-     */
-    public void setServicet(Service servicet) {
-        this.servicet = servicet;
-    }
-
-    
-    
-    /**
      * Gets the operation.
      *
      * @return the operation
@@ -69,12 +49,32 @@ public class HasOperation extends AbstractEntity{
     }
 
     /**
+     * Gets the servicet.
+     *
+     * @return the servicet
+     */
+    public Service getServicet() {
+        return servicet;
+    }
+
+    
+    
+    /**
      * Sets the operation.
      *
      * @param operation the new operation
      */
     public void setOperation(Operation operation) {
         this.operation = operation;
+    }
+
+    /**
+     * Sets the servicet.
+     *
+     * @param servicet the new servicet
+     */
+    public void setServicet(Service servicet) {
+        this.servicet = servicet;
     }
  
 }

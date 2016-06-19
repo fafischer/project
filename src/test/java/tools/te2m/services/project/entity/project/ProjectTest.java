@@ -27,19 +27,6 @@ import tools.te2m.services.project.entity.system.SystemInformation;
 public class ProjectTest {
 
     /**
-     * Test for getters for collections never return null.
-     */
-    @Test
-    public void testGettersForCollectionsNeverReturnNull() {
-        // must never return null
-        Project p1 = new Project();
-        assertNotNull("Get Usecases must not return null", p1.getUsecases());
-        assertNotNull("GetBOs must not return null", p1.getBusinessObjects());
-        assertNotNull("Get Personas must not return null", p1.getPersonas());
-        assertNotNull("GetSystems must not return null", p1.getSystems());
-    }
-
-    /**
      * Test for fluent creation.
      */
     @Test
@@ -58,5 +45,18 @@ public class ProjectTest {
         assertEquals("Wrong number of usecases returned ", 1, p1.getUsecases().size());
         assertEquals("Wrong number of systems returned ", 1, p1.getSystems().size());
         assertEquals("Wrong number of BOs returned ", 1, p1.getBusinessObjects().size());
+    }
+
+    /**
+     * Test for getters for collections never return null.
+     */
+    @Test
+    public void testGettersForCollectionsNeverReturnNull() {
+        // must never return null
+        Project p1 = new Project();
+        assertNotNull("Get Usecases must not return null", p1.getUsecases());
+        assertNotNull("GetBOs must not return null", p1.getBusinessObjects());
+        assertNotNull("Get Personas must not return null", p1.getPersonas());
+        assertNotNull("GetSystems must not return null", p1.getSystems());
     }
 }

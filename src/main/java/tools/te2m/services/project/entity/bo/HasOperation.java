@@ -48,21 +48,21 @@ public class HasOperation extends AbstractEntity{
     }
 
     /**
-     * Sets the business object.
-     *
-     * @param businessObject the new business object
-     */
-    public void setBusinessObject(BusinessObject businessObject) {
-        this.businessObject = businessObject;
-    }
-
-    /**
      * Gets the operation.
      *
      * @return the operation
      */
     public Operation getOperation() {
         return operation;
+    }
+
+    /**
+     * Sets the business object.
+     *
+     * @param businessObject the new business object
+     */
+    public void setBusinessObject(BusinessObject businessObject) {
+        this.businessObject = businessObject;
     }
 
     /**

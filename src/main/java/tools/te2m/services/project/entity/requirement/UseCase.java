@@ -34,18 +34,6 @@ public class UseCase extends AbstractNamedEntity<UseCase> {
     public static final String RELATIONSHIP_EXTENDS = "EXTENDS";
 
     /**
-     * The included usecases.
-     */
-    @Relationship(type = RELATIONSHIP_INCLUDES)
-    private Set<UseCase> includedUsecases;
-
-    /**
-     * The extended use case.
-     */
-    @Relationship(type = RELATIONSHIP_EXTENDS)
-    private UseCase extendedUseCase;
-    
-    /**
      * Creates the.
      *
      * @return the use case
@@ -53,7 +41,48 @@ public class UseCase extends AbstractNamedEntity<UseCase> {
     public static UseCase create(){
         return new UseCase();
     }
+
+    /**
+     * The included usecases.
+     */
+    @Relationship(type = RELATIONSHIP_INCLUDES)
+    private Set<UseCase> includedUsecases;
     
+    /**
+     * The extended use case.
+     */
+    @Relationship(type = RELATIONSHIP_EXTENDS)
+    private UseCase extendedUseCase;
+    
+    /**
+     * Adds the included use case.
+     *
+     * @param usecase the usecase
+     */
+    public void addIncludedUseCase(UseCase usecase) {
+        getIncludedUsecases().add(usecase);
+    }
+
+    /**
+     * Extend.
+     *
+     * @param usecase the usecase
+     * @return the use case
+     */
+    public UseCase extend(UseCase usecase) {
+        setExtendedUseCase(usecase);
+        return this;
+    }
+
+    /**
+     * Gets the extended use case.
+     *
+     * @return the extended use case
+     */
+    public UseCase getExtendedUseCase() {
+        return extendedUseCase;
+    }
+
     /**
      * Gets the included usecases.
      *
@@ -67,30 +96,14 @@ public class UseCase extends AbstractNamedEntity<UseCase> {
     }
 
     /**
-     * Sets the included usecases.
-     *
-     * @param usecases the new included usecases
-     */
-    public void setIncludedUsecases(Set<UseCase> usecases) {
-        this.includedUsecases = usecases;
-    }
-
-    /**
-     * Adds the included use case.
+     * Includes.
      *
      * @param usecase the usecase
+     * @return the use case
      */
-    public void addIncludedUseCase(UseCase usecase) {
-        getIncludedUsecases().add(usecase);
-    }
-
-    /**
-     * Gets the extended use case.
-     *
-     * @return the extended use case
-     */
-    public UseCase getExtendedUseCase() {
-        return extendedUseCase;
+    public UseCase includes(UseCase usecase) {
+        addIncludedUseCase(usecase);
+        return this;
     }
 
     /**
@@ -101,27 +114,14 @@ public class UseCase extends AbstractNamedEntity<UseCase> {
     public void setExtendedUseCase(UseCase extendedUseCase) {
         this.extendedUseCase = extendedUseCase;
     }
-
-    /**
-     * Extend.
-     *
-     * @param usecase the usecase
-     * @return the use case
-     */
-    public UseCase extend(UseCase usecase) {
-        setExtendedUseCase(usecase);
-        return this;
-    }
     
     
     /**
-     * Includes.
+     * Sets the included usecases.
      *
-     * @param usecase the usecase
-     * @return the use case
+     * @param usecases the new included usecases
      */
-    public UseCase includes(UseCase usecase) {
-        addIncludedUseCase(usecase);
-        return this;
+    public void setIncludedUsecases(Set<UseCase> usecases) {
+        this.includedUsecases = usecases;
     }
 }

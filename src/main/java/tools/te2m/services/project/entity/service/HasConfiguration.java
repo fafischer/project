@@ -39,24 +39,6 @@ public class HasConfiguration extends AbstractEntity{
     private BusinessObject configuration;
 
     /**
-     * Gets the service.
-     *
-     * @return the service
-     */
-    public Service getService() {
-        return service;
-    }
-
-    /**
-     * Sets the service.
-     *
-     * @param service the new service
-     */
-    public void setService(Service service) {
-        this.service = service;
-    }
-
-    /**
      * Gets the configuration.
      *
      * @return the configuration
@@ -66,12 +48,30 @@ public class HasConfiguration extends AbstractEntity{
     }
 
     /**
+     * Gets the service.
+     *
+     * @return the service
+     */
+    public Service getService() {
+        return service;
+    }
+
+    /**
      * Sets the configuration.
      *
      * @param configuration the new configuration
      */
     public void setConfiguration(BusinessObject configuration) {
         this.configuration = configuration;
+    }
+
+    /**
+     * Sets the service.
+     *
+     * @param service the new service
+     */
+    public void setService(Service service) {
+        this.service = service;
     }
  
 }

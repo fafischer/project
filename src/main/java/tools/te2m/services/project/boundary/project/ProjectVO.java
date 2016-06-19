@@ -42,21 +42,21 @@ public class ProjectVO extends EntityRefVO {
     private Set<EntityRefVO> usecases;
 
     /**
+     * Gets the business objects.
+     *
+     * @return the business objects
+     */
+    public Set<EntityRefVO> getBusinessObjects() {
+        return businessObjects;
+    }
+
+    /**
      * Gets the personas.
      *
      * @return the personas
      */
     public Set<EntityRefVO> getPersonas() {
         return personas;
-    }
-
-    /**
-     * Sets the personas.
-     *
-     * @param personas the new personas
-     */
-    public void setPersonas(Set<EntityRefVO> personas) {
-        this.personas = personas;
     }
 
     /**
@@ -69,21 +69,12 @@ public class ProjectVO extends EntityRefVO {
     }
 
     /**
-     * Sets the systems.
+     * Gets the usecases.
      *
-     * @param systems the new systems
+     * @return the usecases
      */
-    public void setSystems(Set<EntityRefVO> systems) {
-        this.systems = systems;
-    }
-
-    /**
-     * Gets the business objects.
-     *
-     * @return the business objects
-     */
-    public Set<EntityRefVO> getBusinessObjects() {
-        return businessObjects;
+    public Set<EntityRefVO> getUsecases() {
+        return usecases;
     }
 
     /**
@@ -96,12 +87,21 @@ public class ProjectVO extends EntityRefVO {
     }
 
     /**
-     * Gets the usecases.
+     * Sets the personas.
      *
-     * @return the usecases
+     * @param personas the new personas
      */
-    public Set<EntityRefVO> getUsecases() {
-        return usecases;
+    public void setPersonas(Set<EntityRefVO> personas) {
+        this.personas = personas;
+    }
+
+    /**
+     * Sets the systems.
+     *
+     * @param systems the new systems
+     */
+    public void setSystems(Set<EntityRefVO> systems) {
+        this.systems = systems;
     }
 
     /**

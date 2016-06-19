@@ -22,13 +22,16 @@ import static org.junit.Assert.*;
 public class PersonaTest {
     
     /**
-     * Test for get usecases.
+     * Test for add usecases.
      */
     @Test
-    public void testGetUsecases() {
+    public void testAddUsecases() {
         // must never return null
         Persona p1 = new Persona();
-        assertNotNull("Must not return null", p1.getUsecases());            
+        p1.addUseCase(new UseCase());
+        assertNotNull("Must not return null", p1.getUsecases());
+        assertEquals("Wrong number of usecases returned ", 1, p1.getUsecases().size());
+                
     }
 
     /**
@@ -49,16 +52,13 @@ public class PersonaTest {
     
     
     /**
-     * Test for add usecases.
+     * Test for get usecases.
      */
     @Test
-    public void testAddUsecases() {
+    public void testGetUsecases() {
         // must never return null
         Persona p1 = new Persona();
-        p1.addUseCase(new UseCase());
-        assertNotNull("Must not return null", p1.getUsecases());
-        assertEquals("Wrong number of usecases returned ", 1, p1.getUsecases().size());
-                
+        assertNotNull("Must not return null", p1.getUsecases());            
     }
 
 }

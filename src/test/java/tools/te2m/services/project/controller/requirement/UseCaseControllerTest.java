@@ -40,26 +40,6 @@ public class UseCaseControllerTest {
     }
 
     /**
-     * Test for baseic creation.
-     */
-    @Test
-    public void testBaseicCreation() {
-        UseCaseController ctrllr = new UseCaseController();
-        String name = UUID.randomUUID().toString();
-        UseCase entity = new UseCase();
-        entity.setName(name);
-        //p1.setDescription("Description goes here...");
-        entity = ctrllr.createOrUpdate(entity);
-        
-        assertNotNull("Entity missing ", entity);
-        
-        assertNotNull("Entity not persistet ", entity.getId());
-        
-        assertEquals("Wrong name found ",name, entity.getName());
-    }
-
-
-    /**
      * Test for base creation with relation.
      */
     @Test
@@ -98,6 +78,26 @@ public class UseCaseControllerTest {
             assertNotNull("ID missing for Usecase", next.getId());
             
         }
+    }
+
+
+    /**
+     * Test for baseic creation.
+     */
+    @Test
+    public void testBaseicCreation() {
+        UseCaseController ctrllr = new UseCaseController();
+        String name = UUID.randomUUID().toString();
+        UseCase entity = new UseCase();
+        entity.setName(name);
+        //p1.setDescription("Description goes here...");
+        entity = ctrllr.createOrUpdate(entity);
+        
+        assertNotNull("Entity missing ", entity);
+        
+        assertNotNull("Entity not persistet ", entity.getId());
+        
+        assertEquals("Wrong name found ",name, entity.getName());
     }
     
 }

@@ -44,21 +44,21 @@ public class Implements extends AbstractEntity{
     }
 
     /**
-     * Sets the source.
-     *
-     * @param source the new source
-     */
-    public void setSource(UseCase source) {
-        this.source = source;
-    }
-
-    /**
      * Gets the target.
      *
      * @return the target
      */
     public UseCase getTarget() {
         return target;
+    }
+
+    /**
+     * Sets the source.
+     *
+     * @param source the new source
+     */
+    public void setSource(UseCase source) {
+        this.source = source;
     }
 
     /**

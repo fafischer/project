@@ -26,24 +26,6 @@ import tools.te2m.services.project.entity.system.SystemInformation;
 public class KnowsSystem extends AbstractEntity {
 
     /**
-     * Gets the project.
-     *
-     * @return the project
-     */
-    public Project getProject() {
-        return project;
-    }
-
-    /**
-     * Sets the project.
-     *
-     * @param project the new project
-     */
-    public void setProject(Project project) {
-        this.project = project;
-    }
-    
-    /**
      * The project.
      */
     @StartNode
@@ -54,6 +36,15 @@ public class KnowsSystem extends AbstractEntity {
      */
     @EndNode
     private SystemInformation system;
+    
+    /**
+     * Gets the project.
+     *
+     * @return the project
+     */
+    public Project getProject() {
+        return project;
+    }
 
     /**
      * Gets the system.
@@ -62,6 +53,15 @@ public class KnowsSystem extends AbstractEntity {
      */
     public SystemInformation getSystem() {
         return system;
+    }
+
+    /**
+     * Sets the project.
+     *
+     * @param project the new project
+     */
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     /**

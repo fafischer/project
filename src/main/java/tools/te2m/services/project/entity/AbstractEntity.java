@@ -21,24 +21,6 @@ public class AbstractEntity {
      */
     protected Long id;
 
-    /**
-     * Gets the id.
-     *
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * Sets the id.
-     *
-     * @param id the new id
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     /* (non-Javadoc)
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -57,12 +39,30 @@ public class AbstractEntity {
         return true;
     }
 
+    /**
+     * Gets the id.
+     *
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
     /* (non-Javadoc)
      * @see java.lang.Object#hashCode()
      */
     @Override
     public int hashCode() {
         return (id == null) ? -1 : id.hashCode();
+    }
+
+    /**
+     * Sets the id.
+     *
+     * @param id the new id
+     */
+    public void setId(Long id) {
+        this.id = id;
     }
     
 }

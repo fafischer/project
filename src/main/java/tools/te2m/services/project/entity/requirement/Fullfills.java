@@ -38,24 +38,6 @@ public class Fullfills extends AbstractEntity{
     private NonfunctionalRequirement nonfunctionalRequirement;
 
     /**
-     * Gets the usecase.
-     *
-     * @return the usecase
-     */
-    public UseCase getUsecase() {
-        return usecase;
-    }
-
-    /**
-     * Sets the usecase.
-     *
-     * @param usecase the new usecase
-     */
-    public void setUsecase(UseCase usecase) {
-        this.usecase = usecase;
-    }
-
-    /**
      * Gets the nonfunctional requirement.
      *
      * @return the nonfunctional requirement
@@ -65,12 +47,30 @@ public class Fullfills extends AbstractEntity{
     }
 
     /**
+     * Gets the usecase.
+     *
+     * @return the usecase
+     */
+    public UseCase getUsecase() {
+        return usecase;
+    }
+
+    /**
      * Sets the nonfunctional requirement.
      *
      * @param nonfunctionalRequirement the new nonfunctional requirement
      */
     public void setNonfunctionalRequirement(NonfunctionalRequirement nonfunctionalRequirement) {
         this.nonfunctionalRequirement = nonfunctionalRequirement;
+    }
+
+    /**
+     * Sets the usecase.
+     *
+     * @param usecase the new usecase
+     */
+    public void setUsecase(UseCase usecase) {
+        this.usecase = usecase;
     }
 
     

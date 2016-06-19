@@ -37,30 +37,21 @@ public class WantsTo extends AbstractEntity{
     private UseCase usecase;
     
     /**
-     * Gets the usecase.
-     *
-     * @return the usecase
-     */
-    public UseCase getUsecase() {
-        return usecase;
-    }
-    
-    /**
-     * Sets the usecase.
-     *
-     * @param usecase the new usecase
-     */
-    public void setUsecase(UseCase usecase) {
-        this.usecase = usecase;
-    }
-
-    /**
      * Gets the persone.
      *
      * @return the persone
      */
     public Persona getPersone() {
         return persone;
+    }
+    
+    /**
+     * Gets the usecase.
+     *
+     * @return the usecase
+     */
+    public UseCase getUsecase() {
+        return usecase;
     }
 
     /**
@@ -70,6 +61,15 @@ public class WantsTo extends AbstractEntity{
      */
     public void setPersone(Persona persone) {
         this.persone = persone;
+    }
+
+    /**
+     * Sets the usecase.
+     *
+     * @param usecase the new usecase
+     */
+    public void setUsecase(UseCase usecase) {
+        this.usecase = usecase;
     }
     
     

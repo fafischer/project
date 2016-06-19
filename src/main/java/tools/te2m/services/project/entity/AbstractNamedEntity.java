@@ -29,30 +29,21 @@ public abstract class AbstractNamedEntity<T extends AbstractNamedEntity<T>> exte
 
 
     /**
-     * Gets the name.
-     *
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the name.
-     *
-     * @param name the new name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
      * Gets the description.
      *
      * @return the description
      */
     public String getDescription() {
         return description;
+    }
+
+    /**
+     * Gets the name.
+     *
+     * @return the name
+     */
+    public String getName() {
+        return name;
     }
 
     /**
@@ -65,14 +56,12 @@ public abstract class AbstractNamedEntity<T extends AbstractNamedEntity<T>> exte
     }
 
     /**
-     * With name.
+     * Sets the name.
      *
-     * @param name the name
-     * @return the t
+     * @param name the new name
      */
-    public T withName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return (T)this;
     }
 
     /**
@@ -83,6 +72,17 @@ public abstract class AbstractNamedEntity<T extends AbstractNamedEntity<T>> exte
      */
     public T withDescription(String description) {
         this.description = description;
+        return (T)this;
+    }
+
+    /**
+     * With name.
+     *
+     * @param name the name
+     * @return the t
+     */
+    public T withName(String name) {
+        this.name = name;
         return (T)this;
     }
 

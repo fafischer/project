@@ -27,6 +27,27 @@ public class KnowsPersona extends AbstractEntity{
 
 
     /**
+     * The project.
+     */
+    @StartNode
+    private Project project;
+
+    /**
+     * The persona.
+     */
+    @EndNode
+    private Persona persona;
+    
+    /**
+     * Gets the persona.
+     *
+     * @return the persona
+     */
+    public Persona getPersona() {
+        return persona;
+    }
+    
+    /**
      * Gets the project.
      *
      * @return the project
@@ -36,42 +57,21 @@ public class KnowsPersona extends AbstractEntity{
     }
 
     /**
-     * Sets the project.
-     *
-     * @param project the new project
-     */
-    public void setProject(Project project) {
-        this.project = project;
-    }
-    
-    /**
-     * The project.
-     */
-    @StartNode
-    private Project project;
-    
-    /**
-     * The persona.
-     */
-    @EndNode
-    private Persona persona;
-
-    /**
-     * Gets the persona.
-     *
-     * @return the persona
-     */
-    public Persona getPersona() {
-        return persona;
-    }
-
-    /**
      * Sets the persona.
      *
      * @param persona the new persona
      */
     public void setPersona(Persona persona) {
         this.persona = persona;
+    }
+
+    /**
+     * Sets the project.
+     *
+     * @param project the new project
+     */
+    public void setProject(Project project) {
+        this.project = project;
     }
     
     

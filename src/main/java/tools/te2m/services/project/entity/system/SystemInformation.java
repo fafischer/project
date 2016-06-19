@@ -56,27 +56,6 @@ public class SystemInformation extends AbstractNamedEntity<SystemInformation> {
     private Set<Service> consumedServices;
 
     /**
-     * Gets the provided services.
-     *
-     * @return the provided services
-     */
-    public Set<Service> getProvidedServices() {
-        if (null == this.providedServices) {
-            this.providedServices= new HashSet<>();
-        }
-        return providedServices;
-    }
-
-    /**
-     * Sets the provided services.
-     *
-     * @param providedServices the new provided services
-     */
-    public void setProvidedServices(Set<Service> providedServices) {
-        this.providedServices = providedServices;
-    }
-
-    /**
      * Gets the consumed services.
      *
      * @return the consumed services
@@ -89,12 +68,33 @@ public class SystemInformation extends AbstractNamedEntity<SystemInformation> {
     }
 
     /**
+     * Gets the provided services.
+     *
+     * @return the provided services
+     */
+    public Set<Service> getProvidedServices() {
+        if (null == this.providedServices) {
+            this.providedServices= new HashSet<>();
+        }
+        return providedServices;
+    }
+
+    /**
      * Sets the consumed services.
      *
      * @param consumedServices the new consumed services
      */
     public void setConsumedServices(Set<Service> consumedServices) {
         this.consumedServices = consumedServices;
+    }
+
+    /**
+     * Sets the provided services.
+     *
+     * @param providedServices the new provided services
+     */
+    public void setProvidedServices(Set<Service> providedServices) {
+        this.providedServices = providedServices;
     }
 
 }
