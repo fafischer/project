@@ -11,33 +11,59 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import tools.te2m.services.project.controller.project.ProjectController;
 import tools.te2m.services.project.entity.project.Project;
 
 @Stateless
 @Path("project")
-public class ProjectFacadeREST{
+public class ProjectFacadeREST {
 
     private ProjectController controller = new ProjectController();
-    
+
     @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(ProjectVO entity) {
-        
+    public Response create(ProjectVO entity) {
+
+         if (null == entity) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        if(null!=entity.getId()){
+            return Response.status(Response.Status.CONFLICT).build();
+        }
         controller.createOrUpdate(fromVO(entity));
+        
+        return Response.ok().build(); 
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Long id, Project entity) {
+    public Response edit(@PathParam("id") Long id, Project entity) {
+        if (null == id) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        if (null == controller.find(id)) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
         controller.createOrUpdate(entity);
+        
+        return Response.ok().build();
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Long id) {
+    public Response remove(@PathParam("id") Long id) {
+
+        if (null == id) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        if (null == controller.find(id)) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
         controller.delete(id);
+
+        return Response.ok().build();
     }
 
     @GET
@@ -53,14 +79,15 @@ public class ProjectFacadeREST{
         return null;
         //Arrays.asList(controller.findAll().);
     }
-/*
+
+    /*
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Project> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return null;
     }
-*/
+     */
     @GET
     @Path("count")
     @Produces(MediaType.TEXT_PLAIN)
@@ -68,31 +95,29 @@ public class ProjectFacadeREST{
         return "0";
     }
 
-    public static Project fromVO(ProjectVO pvo)
-    {
-        if(null==pvo){
+    public static Project fromVO(ProjectVO pvo) {
+        if (null == pvo) {
             return null;
         }
-        
+
         Project project = Project.create()
                 .withName(pvo.getName())
                 .withDescription(pvo.getDescription());
-                
+
         project.setId(pvo.getId());
-        
+
         return project;
     }
 
-    public static ProjectVO toVO(Project project)
-    {
-        
-        if(null==project){
+    public static ProjectVO toVO(Project project) {
+
+        if (null == project) {
             return null;
         }
-        
+
         ProjectVO projectVO = new ProjectVO();
-        
+
         return projectVO;
     }
-    
+
 }
