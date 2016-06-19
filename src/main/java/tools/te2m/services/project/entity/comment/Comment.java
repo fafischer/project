@@ -1,20 +1,28 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* Comment.java
+*   
+* Copyright 2009 - 2016 Frank Fischer (email: frank@te2m.de)
+*
+* This file is part of the project project which is a sub project of temtools 
+* (http://temtools.sf.net).
+* 
+*/
 package tools.te2m.services.project.entity.comment;
 
 import org.neo4j.ogm.annotation.NodeEntity;
 import tools.te2m.services.project.entity.AbstractNamedEntity;
 
 /**
+ * The Class Comment.
  *
  * @author ffi
  */
 @NodeEntity
 public class Comment extends AbstractNamedEntity {
 
+    /**
+     * The Constant RELATIONSHIP_HAS_PARAMETER.
+     */
     public static final String RELATIONSHIP_HAS_PARAMETER = "HAS_PARAMETER";
 
 }

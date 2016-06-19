@@ -1,10 +1,29 @@
+/*
+* UseCaseTest.java
+*   
+* Copyright 2009 - 2016 Frank Fischer (email: frank@te2m.de)
+*
+* This file is part of the project project which is a sub project of temtools 
+* (http://temtools.sf.net).
+* 
+*/
 package tools.te2m.services.project.entity.requirement;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * The Class UseCaseTest.
+ *
+ * @author frank
+ * @version 1.0
+ * @since 1.0
+ */
 public class UseCaseTest {
     
+    /**
+     * Test for get usecases.
+     */
     @Test
     public void testGetUsecases() {
         // must never return null
@@ -13,6 +32,9 @@ public class UseCaseTest {
                 
     }
 
+    /**
+     * Test for fluent creation.
+     */
     @Test
     public void testFluentCreation() {
         // must never return null
@@ -28,6 +50,9 @@ public class UseCaseTest {
     }
     
     
+    /**
+     * Test for add usecases.
+     */
     @Test
     public void testAddUsecases() {
         // must never return null

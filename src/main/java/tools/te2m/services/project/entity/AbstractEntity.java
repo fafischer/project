@@ -1,26 +1,47 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* AbstractEntity.java
+*   
+* Copyright 2009 - 2016 Frank Fischer (email: frank@te2m.de)
+*
+* This file is part of the project project which is a sub project of temtools 
+* (http://temtools.sf.net).
+* 
+*/
 package tools.te2m.services.project.entity;
 
 /**
+ * The Class AbstractEntity.
  *
  * @author ffi
  */
 public class AbstractEntity {
     
+    /**
+     * The id.
+     */
     protected Long id;
 
+    /**
+     * Gets the id.
+     *
+     * @return the id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Sets the id.
+     *
+     * @param id the new id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -36,6 +57,9 @@ public class AbstractEntity {
         return true;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#hashCode()
+     */
     @Override
     public int hashCode() {
         return (id == null) ? -1 : id.hashCode();

@@ -1,3 +1,12 @@
+/*
+* NonfunctionalRequirementsControllerTest.java
+*   
+* Copyright 2009 - 2016 Frank Fischer (email: frank@te2m.de)
+*
+* This file is part of the project project which is a sub project of temtools 
+* (http://temtools.sf.net).
+* 
+*/
 package tools.te2m.services.project.controller.requirement;
 
 import java.util.UUID;
@@ -9,8 +18,18 @@ import tools.te2m.services.project.controller.Neo4JSessionFactory;
 import tools.te2m.services.project.entity.requirement.NonfunctionalRequirement;
 
 
+/**
+ * The Class NonfunctionalRequirementsControllerTest.
+ *
+ * @author frank
+ * @version 1.0
+ * @since 1.0
+ */
 public class NonfunctionalRequirementsControllerTest {
         
+    /**
+     * Sets the up class.
+     */
     @BeforeClass
     public static void setUpClass() {
         Neo4JSessionFactory factory = Neo4JSessionFactory.getInstance();
@@ -18,6 +37,9 @@ public class NonfunctionalRequirementsControllerTest {
         session.purgeDatabase();
     }
 
+    /**
+     * Test for baseic creation.
+     */
     @Test
     public void testBaseicCreation() {
         NonfunctionalRequirementController ctrllr = new NonfunctionalRequirementController();

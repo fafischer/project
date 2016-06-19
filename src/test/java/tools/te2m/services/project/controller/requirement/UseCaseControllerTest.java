@@ -1,3 +1,12 @@
+/*
+* UseCaseControllerTest.java
+*   
+* Copyright 2009 - 2016 Frank Fischer (email: frank@te2m.de)
+*
+* This file is part of the project project which is a sub project of temtools 
+* (http://temtools.sf.net).
+* 
+*/
 package tools.te2m.services.project.controller.requirement;
 
 import java.util.Iterator;
@@ -11,8 +20,18 @@ import tools.te2m.services.project.controller.Neo4JSessionFactory;
 import tools.te2m.services.project.entity.requirement.UseCase;
 import tools.te2m.services.project.entity.requirement.UseCase;
 
+/**
+ * The Class UseCaseControllerTest.
+ *
+ * @author frank
+ * @version 1.0
+ * @since 1.0
+ */
 public class UseCaseControllerTest {
         
+    /**
+     * Sets the up class.
+     */
     @BeforeClass
     public static void setUpClass() {
         Neo4JSessionFactory factory = Neo4JSessionFactory.getInstance();
@@ -20,6 +39,9 @@ public class UseCaseControllerTest {
         session.purgeDatabase();
     }
 
+    /**
+     * Test for baseic creation.
+     */
     @Test
     public void testBaseicCreation() {
         UseCaseController ctrllr = new UseCaseController();
@@ -37,6 +59,9 @@ public class UseCaseControllerTest {
     }
 
 
+    /**
+     * Test for base creation with relation.
+     */
     @Test
     public void testBaseCreationWithRelation() {
         UseCaseController ctrllr = new UseCaseController();

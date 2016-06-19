@@ -1,3 +1,12 @@
+/*
+* ProjectTest.java
+*   
+* Copyright 2009 - 2016 Frank Fischer (email: frank@te2m.de)
+*
+* This file is part of the project project which is a sub project of temtools 
+* (http://temtools.sf.net).
+* 
+*/
 package tools.te2m.services.project.entity.project;
 
 import org.junit.Test;
@@ -8,8 +17,18 @@ import tools.te2m.services.project.entity.requirement.Persona;
 import tools.te2m.services.project.entity.requirement.UseCase;
 import tools.te2m.services.project.entity.system.SystemInformation;
 
+/**
+ * The Class ProjectTest.
+ *
+ * @author frank
+ * @version 1.0
+ * @since 1.0
+ */
 public class ProjectTest {
 
+    /**
+     * Test for getters for collections never return null.
+     */
     @Test
     public void testGettersForCollectionsNeverReturnNull() {
         // must never return null
@@ -20,6 +39,9 @@ public class ProjectTest {
         assertNotNull("GetSystems must not return null", p1.getSystems());
     }
 
+    /**
+     * Test for fluent creation.
+     */
     @Test
     public void testFluentCreation() {
         // must never return null

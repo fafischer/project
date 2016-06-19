@@ -1,8 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* ObjectFacadeREST.java
+*   
+* Copyright 2009 - 2016 Frank Fischer (email: frank@te2m.de)
+*
+* This file is part of the project project which is a sub project of temtools 
+* (http://temtools.sf.net).
+* 
+*/
 package tools.te2m.services.project.boundary;
 
 import java.util.List;
@@ -20,6 +24,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
+ * The Class ObjectFacadeREST.
  *
  * @author ffi
  */
@@ -27,12 +32,23 @@ import javax.ws.rs.core.MediaType;
 @Path("object")
 public class ObjectFacadeREST{
 
+    /**
+     * Creates the.
+     *
+     * @param entity the entity
+     */
     @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void create(Object entity) {
         //super.create(entity);
     }
 
+    /**
+     * Edits the.
+     *
+     * @param id the id
+     * @param entity the entity
+     */
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -40,12 +56,23 @@ public class ObjectFacadeREST{
         //super.edit(entity);
     }
 
+    /**
+     * Removes the.
+     *
+     * @param id the id
+     */
     @DELETE
     @Path("{id}")
     public void remove(@PathParam("id") Long id) {
         //super.remove(super.find(id));
     }
 
+    /**
+     * Find.
+     *
+     * @param id the id
+     * @return the object
+     */
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -53,6 +80,11 @@ public class ObjectFacadeREST{
         return null;
     }
 
+    /**
+     * Find all.
+     *
+     * @return the list
+     */
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Object> findAll() {
@@ -66,7 +98,12 @@ public class ObjectFacadeREST{
         return null;
     }
 */
-    @GET
+    /**
+ * Count rest.
+ *
+ * @return the string
+ */
+@GET
     @Path("count")
     @Produces(MediaType.TEXT_PLAIN)
     public String countREST() {
