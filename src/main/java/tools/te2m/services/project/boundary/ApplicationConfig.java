@@ -56,8 +56,9 @@ public class ApplicationConfig extends Application {
         return resources;
     }
 
+
+
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(tools.te2m.services.project.boundary.project.ProjectFacadeREST.class);
     }
-
 }
