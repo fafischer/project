@@ -9,8 +9,10 @@
 */
 package tools.te2m.services.project.boundary.project;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import tools.te2m.services.project.controller.project.ProjectController;
@@ -75,7 +78,8 @@ public class ProjectFacadeREST {
     /**
      * The controller.
      */
-    private ProjectController controller = new ProjectController();
+    @Inject
+    private ProjectController controller;// = new ProjectController();
 
 
     /**
@@ -85,10 +89,10 @@ public class ProjectFacadeREST {
      * @return the response
      */
     @POST
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public Response create(ProjectVO entity) {
 
-         if (null == entity) {
+        if (null == entity) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         if(null!=entity.getId()){
@@ -108,7 +112,7 @@ public class ProjectFacadeREST {
      */
     @PUT
     @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public Response edit(@PathParam("id") Long id, Project entity) {
         if (null == id) {
             return Response.status(Response.Status.BAD_REQUEST).build();
@@ -129,9 +133,20 @@ public class ProjectFacadeREST {
      */
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Project find(@PathParam("id") Long id) {
-        return controller.find(id);
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response find(@PathParam("id") Long id) {
+        
+        if (null == id) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        
+        Project project = controller.find(id);
+        
+        if (null ==  project){
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        
+        return Response.ok(toVO(project)).build();
     }
 
     /**
@@ -140,10 +155,26 @@ public class ProjectFacadeREST {
      * @return the list
      */
     @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Project> findAll() {
-        return null;
-        //Arrays.asList(controller.findAll().);
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response findAll() {
+       
+        List<ProjectVO> resultList = new ArrayList<>();
+        
+        for(Project project: controller.findAll())
+        {
+            resultList.add(toVO(project));
+        }
+        
+        GenericEntity<List<ProjectVO>> list = new GenericEntity<List<ProjectVO>>(resultList) { };
+        return Response.ok(list).build();
+    }
+    
+    @GET
+    @Path("ping")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response ping()
+    {
+        return Response.ok("OK").build();
     }
 
     /**

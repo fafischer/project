@@ -9,6 +9,8 @@
 */
 package tools.te2m.services.project.controller.project;
 
+import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import tools.te2m.services.project.controller.GenericController;
 import tools.te2m.services.project.entity.project.Project;
 
@@ -17,6 +19,7 @@ import tools.te2m.services.project.entity.project.Project;
  *
  * @author ffi
  */
+@Stateless
 public class ProjectController extends GenericController<Project>{
 
     /* (non-Javadoc)
