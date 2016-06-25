@@ -5,7 +5,7 @@ node {
    // Get some code from a GitHub repository
    //git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
 
-   scm checkout
+   checkout scm
 
    print env.getEnvironment()
 
