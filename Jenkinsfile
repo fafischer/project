@@ -42,7 +42,7 @@ node {
     // Use the SSH Agent Plugin to forward the used ssh credentials 
     // from the jenkins master to the jenkins slave. Otherwise you may 
     // not be able to push/pull, clone
-    sshagent(['git-jenkins']) {
+    sshagent(['Git-Jenkins']) {
       // Invoke the maven build without tests and deploy the artifacts
       sh "${mvnHome}/bin/mvn -B -DskipTests clean deploy"
       // Push the commit and the created tag
