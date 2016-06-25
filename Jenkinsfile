@@ -48,6 +48,7 @@ node {
       // Push the commit and the created tag
       sh "git push origin master"
       sh "git push origin v${v}"
+    }
 }
 
 // Parse the pom.xml and extract the version information.
