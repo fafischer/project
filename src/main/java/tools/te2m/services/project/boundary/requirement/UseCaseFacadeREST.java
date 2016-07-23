@@ -1,14 +1,6 @@
-/*
-* ProjectFacadeREST.java
-*   
-* Copyright 2009 - 2016 Frank Fischer (email: frank@te2m.de)
-*
-* This file is part of the project project which is a sub project of temtools 
-* (http://temtools.sf.net).
-* 
-*/
-package tools.te2m.services.project.boundary.project;
+package tools.te2m.services.project.boundary.requirement;
 
+import tools.te2m.services.project.boundary.project.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -25,7 +17,9 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import tools.te2m.services.project.controller.project.ProjectController;
+import tools.te2m.services.project.controller.requirement.UseCaseController;
 import tools.te2m.services.project.entity.project.Project;
+import tools.te2m.services.project.entity.requirement.UseCase;
 
 /**
  * The Class ProjectFacadeREST.
@@ -35,65 +29,66 @@ import tools.te2m.services.project.entity.project.Project;
  * @since 1.0
  */
 @Stateless
-@Path("project")
-public class ProjectFacadeREST {
+@Path("usecase")
+public class UseCaseFacadeREST {
 
     /**
-     * Maps a project entity based on a ProjectVO
+     * Maps a UseCase entity based on a UseCaseVO
      *
      * @param pvo the pvo
-     * @return the project
+     * @return the UseCase
      */
-    public static Project fromVO(ProjectVO pvo) {
+    public static UseCase fromVO(UseCaseVO pvo) {
         if (null == pvo) {
             return null;
         }
 
-        Project project = Project.create()
+        UseCase uc = UseCase.create()
                 .withName(pvo.getName())
                 .withDescription(pvo.getDescription());
 
-        project.setId(pvo.getId());
+        uc.setId(pvo.getId());
 
-        return project;
+        return uc;
     }
 
     /**
      * Creates a ProjectVO based on an Project entity
      *
-     * @param project the project
-     * @return the project vo
+     * @param uc The UseCase
+     * @return the uc vo
      */
-    public static ProjectVO toVO(Project project) {
+    public static UseCaseVO toVO(UseCase uc) {
 
-        if (null == project) {
+        if (null == uc) {
             return null;
         }
 
-        ProjectVO projectVO = new ProjectVO();
+        UseCaseVO ucVO = new UseCaseVO();
 
-        projectVO.setName(project.getName());
-        projectVO.setDescription(project.getDescription());
-        projectVO.setId(project.getId());
-        return projectVO;
+        ucVO.setName(uc.getName());
+        ucVO.setDescription(uc.getDescription());
+        ucVO.setId(uc.getId());
+        
+        return ucVO;
     }
 
     /**
      * The controller.
      */
     @Inject
-    private ProjectController controller;// = new ProjectController();
+    private UseCaseController controller;// = new ProjectController();
 
 
     /**
-     * Creates a project.
+     * Creates a uc.
      *
      * @param entity the entity
      * @return the response
      */
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response create(ProjectVO entity) {
+    public Response create(UseCaseVO entity) {
 
         if (null == entity) {
             return Response.status(Response.Status.BAD_REQUEST).build();
@@ -116,14 +111,14 @@ public class ProjectFacadeREST {
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_JSON})
-    public Response edit(@PathParam("id") Long id, Project entity) {
+    public Response edit(@PathParam("id") Long id, UseCaseVO entity) {
         if (null == id) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         if (null == controller.find(id)) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        controller.createOrUpdate(entity);
+        controller.createOrUpdate(fromVO(entity));
         
         return Response.ok().build();
     }
@@ -132,7 +127,7 @@ public class ProjectFacadeREST {
      * Find.
      *
      * @param id the id
-     * @return the project
+     * @return the uc
      */
     @GET
     @Path("{id}")
@@ -143,13 +138,13 @@ public class ProjectFacadeREST {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
-        Project project = controller.find(id);
+        UseCase uc = controller.find(id);
         
-        if (null ==  project){
+        if (null ==  uc){
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         
-        return Response.ok(toVO(project)).build();
+        return Response.ok(toVO(uc)).build();
     }
 
     /**
@@ -161,14 +156,14 @@ public class ProjectFacadeREST {
     @Produces({MediaType.APPLICATION_JSON})
     public Response findAll() {
        
-        List<ProjectVO> resultList = new ArrayList<>();
+        List<UseCaseVO> resultList = new ArrayList<>();
         
-        for(Project project: controller.findAll())
+        for(UseCase uc: controller.findAll())
         {
-            resultList.add(toVO(project));
+            resultList.add(toVO(uc));
         }
         
-        GenericEntity<List<ProjectVO>> list = new GenericEntity<List<ProjectVO>>(resultList) { };
+        GenericEntity<List<UseCaseVO>> list = new GenericEntity<List<UseCaseVO>>(resultList) { };
         return Response.ok(list).build();
     }
     

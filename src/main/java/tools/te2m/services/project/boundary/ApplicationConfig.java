@@ -60,5 +60,7 @@ public class ApplicationConfig extends Application {
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(tools.te2m.services.project.boundary.project.ProjectFacadeREST.class);
+        resources.add(tools.te2m.services.project.boundary.project.admin.AdminFacadeREST.class);
+        resources.add(tools.te2m.services.project.boundary.requirement.UseCaseFacadeREST.class);
     }
 }

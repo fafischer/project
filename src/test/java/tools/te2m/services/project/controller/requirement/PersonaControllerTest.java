@@ -17,6 +17,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.neo4j.ogm.session.Session;
 import tools.te2m.services.project.controller.Neo4JSessionFactory;
+import tools.te2m.services.project.controller.SessionProvider;
 import tools.te2m.services.project.entity.requirement.Persona;
 import tools.te2m.services.project.entity.requirement.UseCase;
 
@@ -44,7 +45,7 @@ public class PersonaControllerTest {
      */
     @Test
     public void testBaseCreation() {
-        PersonaController ctrllr = new PersonaController();
+        PersonaController ctrllr = new PCC();
         String name = UUID.randomUUID().toString();
         Persona p1 = new Persona();
         p1.setName(name);
@@ -63,7 +64,7 @@ public class PersonaControllerTest {
      */
     @Test
     public void testBaseCreationWithRelation() {
-        PersonaController ctrllr = new PersonaController();
+        PersonaController ctrllr = new PCC();
         String name = UUID.randomUUID().toString();
         
         String ucName = UUID.randomUUID().toString();
@@ -99,5 +100,14 @@ public class PersonaControllerTest {
         }
     }
 
+    private class PCC extends PersonaController{
     
+        public PCC(){
+            super();
+            Neo4JSessionFactory factory = Neo4JSessionFactory.getInstance();
+            Session newSession = factory.getNeo4jSession();
+
+            setSession(newSession);
+        }
+    }    
 }
