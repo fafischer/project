@@ -20,9 +20,6 @@ import tools.te2m.services.project.entity.AbstractNamedEntity;
 @NodeEntity
 public class Comment extends AbstractNamedEntity {
 
-    /**
-     * The Constant RELATIONSHIP_HAS_PARAMETER.
-     */
-    public static final String RELATIONSHIP_HAS_PARAMETER = "HAS_PARAMETER";
+    public static final String RELATIONSHIP_HAS_REPLIES = "HAS_REPLIES";
 
 }

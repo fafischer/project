@@ -6,7 +6,7 @@
 * This file is part of the project project which is a sub project of temtools 
 * (http://temtools.sf.net).
 * 
-*/
+ */
 package tools.te2m.services.project.entity.system;
 
 import java.util.HashSet;
@@ -28,7 +28,7 @@ public class SystemInformation extends AbstractNamedEntity<SystemInformation> {
      * The Constant RELATIONSHIP_PROVIDES.
      */
     public static final String RELATIONSHIP_PROVIDES = "PROVIDES";
-    
+
     /**
      * The Constant RELATIONSHIP_CONSUMES.
      */
@@ -55,6 +55,19 @@ public class SystemInformation extends AbstractNamedEntity<SystemInformation> {
     @Relationship(type = RELATIONSHIP_CONSUMES)
     private Set<Service> consumedServices;
 
+    public SystemInformation provides(Service service)
+    {
+        addProvidedService(service);
+        return this;
+    }
+
+    public SystemInformation consumes(Service service)
+    {
+        addConsumedService(service);
+        return this;
+    }
+
+    
     /**
      * Gets the consumed services.
      *
@@ -62,7 +75,7 @@ public class SystemInformation extends AbstractNamedEntity<SystemInformation> {
      */
     public Set<Service> getConsumedServices() {
         if (null == this.consumedServices) {
-            this.consumedServices= new HashSet<>();
+            this.consumedServices = new HashSet<>();
         }
         return consumedServices;
     }
@@ -74,7 +87,7 @@ public class SystemInformation extends AbstractNamedEntity<SystemInformation> {
      */
     public Set<Service> getProvidedServices() {
         if (null == this.providedServices) {
-            this.providedServices= new HashSet<>();
+            this.providedServices = new HashSet<>();
         }
         return providedServices;
     }
@@ -89,12 +102,34 @@ public class SystemInformation extends AbstractNamedEntity<SystemInformation> {
     }
 
     /**
+     * Adds a consumed service.
+     *
+     * @param consumedService the new consumed service
+     */
+    public void addConsumedService(Service consumedService) {
+        if (null != consumedService) {
+            getConsumedServices().add(consumedService);
+        }
+    }
+
+    /**
      * Sets the provided services.
      *
      * @param providedServices the new provided services
      */
     public void setProvidedServices(Set<Service> providedServices) {
         this.providedServices = providedServices;
+    }
+
+    /**
+     * Adds a provided service.
+     *
+     * @param providedService the new consumed service
+     */
+    public void addProvidedService(Service providedService) {
+        if (null != providedService) {
+            getProvidedServices().add(providedService);
+        }
     }
 
 }
