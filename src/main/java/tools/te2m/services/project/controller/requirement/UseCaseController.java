@@ -10,6 +10,7 @@
 package tools.te2m.services.project.controller.requirement;
 
 import tools.te2m.services.project.controller.GenericController;
+import tools.te2m.services.project.controller.SessionProvider;
 import tools.te2m.services.project.entity.requirement.UseCase;
 
 /**
@@ -21,6 +22,12 @@ import tools.te2m.services.project.entity.requirement.UseCase;
  */
 public class UseCaseController extends GenericController<UseCase>{
 
+    public UseCaseController()
+    {
+        super();
+    }
+    
+    
     /* (non-Javadoc)
      * @see tools.te2m.services.project.controller.GenericController#getEntityType()
      */

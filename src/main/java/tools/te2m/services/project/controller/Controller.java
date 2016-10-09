@@ -9,6 +9,8 @@
 */
 package tools.te2m.services.project.controller;
 
+import org.neo4j.ogm.session.Session;
+
 /**
  * The Interface Controller.
  *
@@ -23,14 +25,14 @@ public interface Controller<T> {
      * @param object the object
      * @return the t
      */
-    T createOrUpdate(T object);
-
+    public T createOrUpdate(T object);
+    
     /**
      * Delete.
      *
      * @param id the id
      */
-    void delete(Long id);
+    public void delete(Long id);
 
     /**
      * Find.
@@ -38,13 +40,14 @@ public interface Controller<T> {
      * @param id the id
      * @return the t
      */
-    T find(Long id);
+    public T find(Long id);
 
+    
     /**
      * Find all.
      *
      * @return the iterable
      */
-    Iterable<T> findAll();
+    public Iterable<T> findAll();
 
 }

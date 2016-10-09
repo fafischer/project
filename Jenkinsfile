@@ -24,6 +24,7 @@ node {
 
     stage 'Set Version'
     def originalV = version();
+    print originalV
     def major = originalV[0];
     def minor = originalV[1];
     def v = "${major}.${minor}-${env.BUILD_NUMBER}"

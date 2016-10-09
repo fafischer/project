@@ -6,9 +6,10 @@
 * This file is part of the project project which is a sub project of temtools 
 * (http://temtools.sf.net).
 * 
-*/
+ */
 package tools.te2m.services.project.controller;
 
+import javax.inject.Inject;
 import org.neo4j.ogm.session.Session;
 import tools.te2m.services.project.entity.AbstractEntity;
 
@@ -22,58 +23,72 @@ import tools.te2m.services.project.entity.AbstractEntity;
  */
 public abstract class GenericController<T> implements Controller<T> {
 
- /**
-  * The Constant DEPTH_LIST.
-  */
- private static final int DEPTH_LIST = 0;
- 
- /**
-  * The Constant DEPTH_ENTITY.
-  */
- private static final int DEPTH_ENTITY = 1;
- 
- /**
-  * The session.
-  */
- private Session session = Neo4JSessionFactory.getInstance().getNeo4jSession();
+    /**
+     * The Constant DEPTH_LIST.
+     */
+    private static final int DEPTH_LIST = 0;
 
- /* (non-Javadoc)
+    /**
+     * The Constant DEPTH_ENTITY.
+     */
+    private static final int DEPTH_ENTITY = -1;
+
+    @Inject @NeoSession
+    Session session;
+
+
+
+    /* (non-Javadoc)
   * @see tools.te2m.services.project.controller.Controller#createOrUpdate(java.lang.Object)
-  */
- @Override
- public T createOrUpdate(T entity) {
-     session.save(entity, DEPTH_ENTITY);
-     return find(((AbstractEntity) entity).getId());
- }
+     */
+    @Override
+    public T createOrUpdate(T entity) {
+        session.save(entity, DEPTH_ENTITY);
+        return find(((AbstractEntity) entity).getId());
+    }
 
- /* (non-Javadoc)
+    
+    /* (non-Javadoc)
   * @see tools.te2m.services.project.controller.Controller#delete(java.lang.Long)
-  */
- @Override
- public void delete(Long id) {
-     session.delete(session.load(getEntityType(), id));
- }
+     */
+    @Override
+    public void delete(Long id) {
+        session.delete(session.load(getEntityType(), id));
+    }
 
- /* (non-Javadoc)
+
+        /* (non-Javadoc)
   * @see tools.te2m.services.project.controller.Controller#find(java.lang.Long)
-  */
- @Override
- public T find(Long id) {
-     return session.load(getEntityType(), id, DEPTH_ENTITY);
- }
+     */
+    @Override
+    public T find(Long id) {
+        return session.load(getEntityType(), id, DEPTH_ENTITY);
+    }
 
- /* (non-Javadoc)
+    
+    /* (non-Javadoc)
   * @see tools.te2m.services.project.controller.Controller#findAll()
-  */
- @Override
- public Iterable<T> findAll() {
-     return session.loadAll(getEntityType(), DEPTH_LIST);
- }
+     */
+    @Override
+    public Iterable<T> findAll() {
+        return session.loadAll(getEntityType(), DEPTH_LIST);
+    }
 
- /**
-  * Gets the entity type.
-  *
-  * @return the entity type
-  */
- public abstract Class<T> getEntityType();
+    /**
+     * Gets the entity type.
+     *
+     * @return the entity type
+     */
+    public abstract Class<T> getEntityType();
+    
+    /**
+     * Sets the session provider.
+     * For easier unit testing without injection only.
+     * @param sp 
+     */
+    protected void setSession(Session sp)
+    {
+        this.session=sp;
+    }
+
 }
