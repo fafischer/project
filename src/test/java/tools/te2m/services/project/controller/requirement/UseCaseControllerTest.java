@@ -18,6 +18,9 @@ import static org.junit.Assert.*;
 import org.neo4j.ogm.session.Session;
 import tools.te2m.services.project.controller.Neo4JSessionFactory;
 import tools.te2m.services.project.entity.requirement.UseCase;
+import tools.te2m.services.project.entity.requirement.UseCaseDifficulty;
+import tools.te2m.services.project.entity.requirement.UseCasePriority;
+import tools.te2m.services.project.entity.requirement.UseCaseState;
 
 /**
  * The Class UseCaseControllerTest.
@@ -104,6 +107,38 @@ public class UseCaseControllerTest {
         assertEquals("Wrong name found ", name, entity.getName());
     }
 
+    /**
+     * Test for baseic creation with using the different enums.
+     */
+    @Test
+    public void testBaseicCreationEnums() {
+        UseCaseController ctrllr = new UCC();
+        String name = UUID.randomUUID().toString();
+        UseCase entity = UseCase.create()
+                .withName(name)
+                .withPriority(UseCasePriority.WONT)
+                .withDifficulty(UseCaseDifficulty.MEDIUM)
+                .withState(UseCaseState.NEW);
+        //p1.setDescription("Description goes here...");
+        entity = ctrllr.createOrUpdate(entity);
+        
+        assertNotNull("Entity missing ", entity);
+
+        assertNotNull("Entity not persistet ", entity.getId());
+
+        UseCase reloaded = ctrllr.find(entity.getId());
+
+        assertNotNull("Entity missing ", reloaded);
+        
+        assertEquals("Wrong priority", UseCasePriority.WONT, reloaded.getPriority());
+        
+        assertEquals("Wrong state", UseCaseState.NEW, reloaded.getState());
+
+        assertEquals("Wrong difficulty", UseCaseDifficulty.MEDIUM, reloaded.getDifficulty());
+
+    }
+
+    
     private class UCC extends UseCaseController {
 
         public UCC() {

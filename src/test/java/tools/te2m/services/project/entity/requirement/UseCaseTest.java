@@ -1,12 +1,3 @@
-/*
-* UseCaseTest.java
-*   
-* Copyright 2009 - 2016 Frank Fischer (email: frank@te2m.de)
-*
-* This file is part of the project project which is a sub project of temtools 
-* (http://temtools.sf.net).
-* 
-*/
 package tools.te2m.services.project.entity.requirement;
 
 import org.junit.Test;
@@ -39,11 +30,18 @@ public class UseCaseTest {
     @Test
     public void testFluentCreation() {
         // must never return null
-        UseCase p1 = UseCase.create().withName("Name").withDescription("Description").includes(UseCase.create()).extend(UseCase.create());
+        UseCase p1 = UseCase.create()
+                .withName("Name")
+                .withDescription("Description")
+                .withPriority(UseCasePriority.MUST)
+                .includes(UseCase.create())
+                .extend(UseCase.create());
 
         assertEquals(p1.getDescription(), "Description");
         
         assertEquals(p1.getName(), "Name");
+        
+        assertEquals(p1.getPriority(), UseCasePriority.MUST);
         
         assertEquals("Wrong number of usecases returned ", 1, p1.getIncludedUsecases().size());
                 

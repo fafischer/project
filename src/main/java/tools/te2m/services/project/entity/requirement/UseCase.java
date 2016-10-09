@@ -53,6 +53,55 @@ public class UseCase extends AbstractNamedEntity<UseCase> {
      */
     @Relationship(type = RELATIONSHIP_EXTENDS)
     private UseCase extendedUseCase;
+
+    private UseCaseDifficulty difficulty;
+    
+    private UseCasePriority priority;
+    
+    private UseCaseState state;
+
+    public UseCaseDifficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(UseCaseDifficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public UseCase withDifficulty(UseCaseDifficulty difficulty) {
+        this.difficulty = difficulty;
+        return this;
+    }
+
+    
+    public UseCasePriority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(UseCasePriority priority) {
+        this.priority = priority;
+    }
+
+    public UseCase withPriority(UseCasePriority priority) {
+        this.priority = priority;
+        return this;
+    }
+
+    
+    public UseCaseState getState() {
+        return state;
+    }
+
+    public void setState(UseCaseState state) {
+        this.state = state;
+    }
+
+    public UseCase withState(UseCaseState state) {
+        this.state = state;
+        return this;
+    }
+    
+    
     
     /**
      * Adds the included use case.
