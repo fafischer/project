@@ -7,7 +7,7 @@
 * (http://temtools.sf.net).
 * 
 */
-package de.te2m.api.project.entity.risk;
+package tools.te2m.services.project.entity.risk;
 
 /**
  * The Enum RiskLevel.
